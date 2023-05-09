@@ -40,11 +40,23 @@
     font-size: 28px;
     font-weight: 700;
     border-radius: 10px;
-    width: 40px;
+    width: 60px;
     height: 40px;
     justify-content: center;
     align-items: center;
     }
+    .btnAddItem{
+        background-color: var(--button-background);
+        font-family: var(--font-family);
+        color: var( --font-color);
+        font-size: 28px;
+        font-weight: 700;
+        border-radius: 10px;
+        width: 150px;
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+        }
     .p , .h3{
         margin: 0px;
     }
