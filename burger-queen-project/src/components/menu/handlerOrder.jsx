@@ -23,7 +23,7 @@ export const HandlerOrder = ({ id, img, name, price }) => {
             </div>
             <p className={style.p}>${price}</p>
             <h3 className={style.h3}>{name}</h3>
-            <button className={style.btnAdd} onClick={addItem} disabled={disableButton}>Agregar</button>
+            <button className={style.btnAddItem} onClick={addItem} disabled={disableButton}>Agregar</button>
         </div>
 
     )

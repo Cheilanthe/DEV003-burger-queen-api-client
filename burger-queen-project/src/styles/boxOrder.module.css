@@ -1,13 +1,14 @@
 /*Component box order*/
-.burgerBox {
-    justify-content: center;
-    margin-left: 10;
-    margin-right: 5%;
+.burgerBox{
     background: rgba(197, 218, 176, 0.5);
-    width: 90%;
+    overflow-y: scroll;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    width: 100%;
     height: 400px;
 }
-
 .customer {
     font-family: var( --font-family);
     font-style: normal;
