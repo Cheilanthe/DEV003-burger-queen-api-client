@@ -1,14 +1,14 @@
 /*Component box order*/
 .burgerBox{
     background: rgba(197, 218, 176, 0.5);
+    font-family: var(--font-family);
+    font-size: 30px;
     overflow-y: scroll;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    margin-left: 0;
     width: 100%;
     height: 400px;
+    justify-items: center;
 }
+
 .customer {
     font-family: var( --font-family);
     font-style: normal;
@@ -21,7 +21,7 @@
 
 .customerName {
     width: 500px;
-    height: 74px;
+    height: 50px;
     margin-top: 5%;
     border-radius: 40px;
 }
@@ -54,4 +54,19 @@
 .processbox{
     display: flex;
     justify-content: space-around;
+    width: 100%;
+}
+.imgGarbage{
+    width: 30px;
+    height: 30px;
+}
+.btnGarbage{
+    background-color: var(--button-background);
+    font-family: var(--font-family);
+    color: var( --font-color);
+    font-size: 28px;
+    font-weight: 700;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
 }

@@ -41,23 +41,24 @@ export function BoxOrder({ name, price }) {
                         // console.log(item.name)
                         const itemPrice = item.price * item.counter;
                         return (
-                            <tr key={index}>
+                            <tr className={styles.tableOrder} key={index}>
                                 <td>{item.name}</td>
                                 <td>
                                     {/* <button className={style.btnAdd} onClick={() => modifyItems(-1, index)}>-</button> */}
                                     <button className={style.btnAdd} onClick={() => item.counter > 1 ? modifyItems(-1, index) : null}>-</button>
                                 </td>
-                                <td>
+                                <td className={style.countertd}>
                                     <div className={style.counter}><p>{item.counter}</p></div>
                                 </td>
                                 <td>
                                     <button className={style.btnAdd} onClick={() => modifyItems(1, index)}>+</button>
                                 </td>
                                 <td>$ {itemPrice}</td>
+                                <td> <button className={styles.btnGarbage}><img className={styles.imgGarbage} src = {'https://i.postimg.cc/cHH67PmW/eliminar.png'} alt='garbage'/></button></td>
                             </tr>
                         )
                     })}
-                    <tr>
+                    <tr className={style.trTotal}>
                         <td>Total: ${addTotal}</td>
                     </tr>
                 </tbody>
