@@ -32,9 +32,10 @@ html {
 }
 
 body {
+  min-height: 100vh; 
   display: flex;
+  justify-content: flex-start;
   flex-direction: column;
-  justify-content: center;
   margin: 1rem;
   background: #9ABF75;
   border-radius: 50px;

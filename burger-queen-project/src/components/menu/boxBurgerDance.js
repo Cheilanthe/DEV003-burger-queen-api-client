@@ -4,7 +4,7 @@ import styles from "../../styles/boxBurgerDance.module.css"
 
 export function BoXBurgerDance () {
     return (
-        <div className={styles.burgerBox}>
+        <div className={styles.burgerBoxDancing}>
         <Image src={dance} className={styles.danceBurger} alt="Dancing burger"/>
         </div>
         

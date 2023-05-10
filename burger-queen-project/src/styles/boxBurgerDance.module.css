@@ -1,13 +1,10 @@
 /*Component box of burger dancing*/
-.burgerBox{
-    background: rgba(197, 218, 176, 0.5);
-    overflow-y: scroll;
-    height: 300px;
+.burgerBoxDancing{
     display: flex;
     flex-direction: column;
     margin-left: 0;
     width: 100%;
-    height: 400px;
+    height: 100%;
 }
 .NavigationMenunav{
     display: flex;
