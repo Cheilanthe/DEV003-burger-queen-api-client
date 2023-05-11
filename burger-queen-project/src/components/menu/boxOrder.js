@@ -1,11 +1,20 @@
 import styles from "../../styles/boxOrder.module.css";
 import style from "../../styles/viewAllFood.module.css";
-import { useContext } from "react";
+import { useContext, useDebugValue, useState } from "react";
 import { ContextOrder } from "./contextOrder";
 
 export function BoxOrder({ name, price }) {
     const [order, setOrder] = useContext(ContextOrder);
-    const modifyItems = (action, itemId) => {
+    const [infOrder, setInfOrder] = useState({});
+        const addInfo = (e) => {
+            const value = e.target.value;
+            const client = e.target.name;
+        setInfOrder(prevInfo => ({...prevInfo, client: value}));
+        };
+     console.log(infOrder);
+     console.log(order);
+     
+    const modifyItems = (action, itemId, infOrder) => {
         const itemInOrder = order.findIndex((item, index) => index === itemId);
         if (itemInOrder !== -1) {
             const updatedOrder = [...order];
@@ -20,12 +29,14 @@ export function BoxOrder({ name, price }) {
             setOrder(updatedOrder);
         } 
     };
-
     const addTotal = order.reduce((previous, current) => previous + (current.price * current.counter), 0);
-
+    
+    console.log(order);
+    const joinOrder =[...order, infOrder, {total: addTotal}];
+    console.log(joinOrder);
     return (
         <div className={styles.burgerBox}>
-            <label className={styles.customer}>Cliente: <input type="text" className={styles.customerName}></input></label>
+            <label className={styles.customer}>Cliente: <input type="text" value={infOrder.client} className={styles.customerName} onChange={addInfo}></input></label>
             <table>
                 <thead>
                     <tr>
