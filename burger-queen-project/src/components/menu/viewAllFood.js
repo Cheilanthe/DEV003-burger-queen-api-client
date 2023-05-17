@@ -9,7 +9,7 @@ export function ViewAllFood({ type }) {
     let [dataFilter, setDataFilter] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:3001/products')
+        fetch('http://localhost:8080//products')
             .then((res) => res.json())
             .then((data) => {
                 setData(data)
