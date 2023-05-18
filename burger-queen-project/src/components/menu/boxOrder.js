@@ -18,9 +18,9 @@ export function BoxOrder({ name, price }) {
         const itemInOrder = order.findIndex((item, index) => index === itemId);
         if (itemInOrder !== -1) {
             const updatedOrder = [...order];
-            // console.log(updatedOrder);
+            console.log(updatedOrder);
             const updatedItem = { ...updatedOrder[itemInOrder] };
-            // console.log(updatedItem)
+            console.log(updatedItem)
             updatedItem.counter += action;
             if (updatedItem.counter) {
                 updatedItem.price;
@@ -30,9 +30,8 @@ export function BoxOrder({ name, price }) {
         } 
     };
     const addTotal = order.reduce((previous, current) => previous + (current.price * current.counter), 0);
-    
     console.log(order);
-    const joinOrder =[...order, infOrder, {total: addTotal}];
+    const joinOrder =Object.assign( infOrder, {'products' : order}, {total: addTotal});
     console.log(joinOrder);
     return (
         <div className={styles.burgerBox}>
