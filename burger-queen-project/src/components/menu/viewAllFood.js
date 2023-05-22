@@ -6,7 +6,9 @@ import { HandlerOrder } from "./handlerOrder";
 export function ViewAllFood({ type }) {
     const [data, setData] = useState([]);
     let [dataFilter, setDataFilter] = useState(0);
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVuZW1haWxAZ21haWwuY29tIiwiaWF0IjoxNjg0NDMyNzk4LCJleHAiOjE2ODQ0MzYzOTgsInN1YiI6IjMifQ.Jwa_O4pJnYepe5F16zzjbCI_6cZTR4uH4tffxe3ai-I';
+    // agregue este hook para compartir info entre components hermanos
+    let [completeOrder, setCompleteOrder] = useState({}); // completeOrden se va a ir a btnProcessOrder y serCompleteO a boxOrder
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVuZW1haWxAZ21haWwuY29tIiwiaWF0IjoxNjg0NzgyMjg1LCJleHAiOjE2ODQ3ODU4ODUsInN1YiI6IjMifQ.zpNnrYBqRW9RLxqBXpLordTT3nCG25xxuP7IDPV57l4';
     useEffect(() => {
         const headers = {'Authorization': `Bearer ${token}` };
         fetch('http://localhost:8080/products', {headers})
@@ -28,7 +30,9 @@ export function ViewAllFood({ type }) {
         const newDataFilter = filterFood(data, type);
         setDataFilter(newDataFilter);
     },  [data, type]) // solo se ejecuta useEffect si estos cambian 
-    
+    // función que se va a enviar a boxOrden para que actualice la orden completa
+    const receivedOrder = (completeOrder) => {setCompleteOrder(completeOrder)};
+
     return (
         <div className={style.container}>
             {dataFilter.length > 0 && // este operador permite ejecutar el siguiente código solo si la expr anterior es true Short-circuit evaluation
@@ -45,8 +49,8 @@ export function ViewAllFood({ type }) {
 
                 )
             })}
-            <BoxOrder />
-        <BtnProcessOrder />
+            <BoxOrder object = {receivedOrder} />
+        <BtnProcessOrder object = {completeOrder} />
         </div>
     )
 };

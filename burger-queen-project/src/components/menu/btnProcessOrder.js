@@ -1,21 +1,22 @@
 import { useRouter } from 'next/router';
 import styles from "../../styles/boxOrder.module.css";
 import { headers } from 'next/dist/client/components/headers';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVuZW1haWxAZ21haWwuY29tIiwiaWF0IjoxNjg0NDMyNzk4LCJleHAiOjE2ODQ0MzYzOTgsInN1YiI6IjMifQ.Jwa_O4pJnYepe5F16zzjbCI_6cZTR4uH4tffxe3ai-I';
-// ya pude hacer el método de post pero aún no puedo poner el cuerpo del objeto en la petición post 
-export function BtnProcessOrder ({ joinOrder }) {
+
+// ya pude hacer el método de post, revisar la estructura del objeto orden, no es la que se solicita en la bd
+export function BtnProcessOrder ( props ) {
+    const order = props;
+    console.log('props', order);
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVuZW1haWxAZ21haWwuY29tIiwiaWF0IjoxNjg0NzgyMjg1LCJleHAiOjE2ODQ3ODU4ODUsInN1YiI6IjMifQ.zpNnrYBqRW9RLxqBXpLordTT3nCG25xxuP7IDPV57l4';
     const router = useRouter();
     const submitOrder = () => {
-        const headers = {'Authorization': `Bearer ${token}` };
-        fetch('http://localhost:8080/orders', {
-            method: 'POST',
-            headers,
-            body:JSON.stringify({
-                joinOrder
-            })
-        })
-        .then(response => response.json())
-        .then(data => console.log(data))
+        const headers = {'Authorization': `Bearer ${token}`,  'Content-Type': 'application/json'};
+        fetch('http://localhost:8080/orders', 
+        {body: JSON.stringify({
+            order
+        }),
+        headers, 
+        method: 'POST'})
+        .then(response => {response.json(); console.log('enviado', props, order)})
         .catch(error=>console.error(error))
     }
     return (

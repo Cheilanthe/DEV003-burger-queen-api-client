@@ -1,9 +1,9 @@
 import styles from "../../styles/boxOrder.module.css";
 import style from "../../styles/viewAllFood.module.css";
-import { useContext, useDebugValue, useState } from "react";
+import { useContext, useState } from "react";
 import { ContextOrder } from "./contextOrder";
 
-export function BoxOrder({ name, price }) {
+export function BoxOrder({ name, price, object }) {
     const [order, setOrder] = useContext(ContextOrder);
     const [infOrder, setInfOrder] = useState({});
         const addInfo = (e) => {
@@ -13,6 +13,9 @@ export function BoxOrder({ name, price }) {
         };
      console.log(infOrder);
      console.log(order);
+     // se lee la prop que es una función que se paso "desnuda" y tuve que volver a guardarla eb alterOrder
+     const alterOrder = object;
+     console.log('props', object);
      
     const modifyItems = (action, itemId, infOrder) => {
         const itemInOrder = order.findIndex((item, index) => index === itemId);
@@ -32,6 +35,8 @@ export function BoxOrder({ name, price }) {
     const addTotal = order.reduce((previous, current) => previous + (current.price * current.counter), 0);
     console.log(order);
     const joinOrder =Object.assign( infOrder, {'products' : order}, {total: addTotal});
+    // aquí actualicé la orden en el componente padre
+    alterOrder(joinOrder);
     console.log(joinOrder);
     return (
         <div className={styles.burgerBox}>
